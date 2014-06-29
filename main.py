@@ -4,6 +4,7 @@ import sys
 import subprocess
 import os, errno, re, unicodedata
 
+MP3_PLAYER = 'cvlc'
 
 def main():
 
@@ -20,8 +21,6 @@ def main():
     with open("login.txt", "r") as f:
         (email, password) = (l.rstrip() for l in f.readlines())
 
-    print ("'%s'" % email)
-    print ("'%s'" % password)
     pandora = Pandora()
 
     client = client_keys[default_one_client_id]
@@ -56,7 +55,7 @@ def main():
                             ])
             print ( 'Playing {0}'.format(song.title))
 
-            subprocess.call(['play',
+            subprocess.call([MP3_PLAYER,
                               filename
                             ])
 

@@ -4,7 +4,7 @@ import sys
 import subprocess
 import os, errno, re, unicodedata
 
-MP3_PLAYER = 'cvlc'
+MP3_PLAYER = 'play'
 
 def main():
 

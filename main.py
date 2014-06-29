@@ -23,7 +23,7 @@ def main():
 
     pandora = Pandora()
 
-    client = client_keys[default_one_client_id]
+    client = client_keys[default_client_id]
 
     pandora.connect(client, email, password)
     pandora.set_audio_quality("highQuality")

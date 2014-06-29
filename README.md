@@ -11,6 +11,8 @@ Requires sox, or another command line tool that can play mp3s
 
 mplayer, ffmpeg, or cvlc
 
+So far, sox works the best. Install the package sox, and then use the "play" command
+
 
 To use, edit main.py to use the correct commandline mp3 player
 

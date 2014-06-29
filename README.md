@@ -13,6 +13,8 @@ Requirements
 ============
 sox, or another command line tool that can play mp3s
 
+Python 3. Python 2.7 wil not work. The pandora client doesn't support it, and it's more than a trivial change to add support for Python 2.7
+
 Currently the play program from the sox package is the best.
 
 `` apt-get install sox``

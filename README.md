@@ -15,11 +15,12 @@ sox, or another command line tool that can play mp3s
 
 Python 3. Python 2.7 wil not work. The pandora client doesn't support it, and it's more than a trivial change to add support for Python 2.7
 
-Currently the play program from the sox package is the best.
+Currently the ffplay program from ffmpeg seems to be the best. I 
+don't actually remember how I installed it, but this is a good guess:
 
-`` apt-get install sox``
+`` apt-get install ffmpeg``
 or 
-`` pacman -S sox ``
+`` pacman -S ffmpeg ``
 or ???
 
 To use, create file called login.txt with your Pandora email on the first line, and password on the second line.

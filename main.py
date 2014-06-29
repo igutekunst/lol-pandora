@@ -26,7 +26,7 @@ def main():
     client = client_keys[default_client_id]
 
     pandora.connect(client, email, password)
-    pandora.set_audio_quality("highQuality")
+    pandora.set_audio_quality("mediamQuality")
 
     for i, station in enumerate(pandora.stations):
         print (i, station.name)

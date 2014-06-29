@@ -1,6 +1,8 @@
 lol-pandora
 ===========
 
+"The Worlds S***iest Pandora Client"
+
 A proof of concept pandora client using the pithos client library.
 
 

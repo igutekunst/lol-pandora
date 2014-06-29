@@ -43,4 +43,4 @@ Disclaimer
 
 This project is in no way affiliated with Pandora. 
 
-Please support Pandora by purchasing Pandora One rather than leeching bandwidth and ignore ads. 
+Please support Pandora by purchasing Pandora One rather than leeching bandwidth and ignoring ads. 

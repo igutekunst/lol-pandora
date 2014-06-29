@@ -4,7 +4,7 @@ import sys
 import subprocess
 import os, errno, re, unicodedata
 
-MP3_PLAYER = 'play'
+MP3_PLAYER = 'ffplay'
 
 def main():
 
@@ -26,7 +26,7 @@ def main():
     client = client_keys[default_client_id]
 
     pandora.connect(client, email, password)
-    pandora.set_audio_quality("mediamQuality")
+    pandora.set_audio_quality("mediumQuality")
 
     for i, station in enumerate(pandora.stations):
         print (i, station.name)
@@ -43,7 +43,7 @@ def main():
         songs = station.get_playlist()
 
         for song in songs: 
-            filename = '{0} - {1} - {2}.mp3'.format(song.artist, song.album, song.songName)
+            filename = '{0} - {1} - {2}.m4a'.format(song.artist, song.album, song.songName)
 
 
             filename = os.path.join('/tmp/lolpiano/', filename)

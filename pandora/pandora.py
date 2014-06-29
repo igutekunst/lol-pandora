@@ -22,7 +22,21 @@ import re
 import json
 import logging
 import time
-import urllib.request, urllib.parse, urllib.error
+
+try:
+    from urllib.request import build_opener
+    from urllib.request import Request
+    from urllib.parse import quote_plus
+    from urllib.error import HTTPError
+    from urllib.error import URLError
+
+    import urllib.error
+except ImportError:
+    from urllib import build_opener
+    from urllib import Request
+    from urllib import quote_plus
+    from urllib import HTTPError
+    from urllib import URLError
 import codecs
 
 # This is an implementation of the Pandora JSON API using Android partner
@@ -66,7 +80,7 @@ def pad(s, l):
 
 class Pandora(object):
     def __init__(self):
-        self.opener = urllib.request.build_opener()
+        self.opener = build_opener()
         pass
 
     def pandora_encrypt(self, s):
@@ -82,9 +96,9 @@ class Pandora(object):
         if self.userId:
             url_arg_strings.append('user_id=%s'%self.userId)
         if self.userAuthToken:
-            url_arg_strings.append('auth_token=%s'%urllib.parse.quote_plus(self.userAuthToken))
+            url_arg_strings.append('auth_token=%s'%quote_plus(self.userAuthToken))
         elif self.partnerAuthToken:
-            url_arg_strings.append('auth_token=%s'%urllib.parse.quote_plus(self.partnerAuthToken))
+            url_arg_strings.append('auth_token=%s'%quote_plus(self.partnerAuthToken))
 
         url_arg_strings.append('method=%s'%method)
         protocol = 'https' if https else 'http'
@@ -105,13 +119,13 @@ class Pandora(object):
             data = self.pandora_encrypt(data)
 
         try:
-            req = urllib.request.Request(url, data, {'User-agent': USER_AGENT, 'Content-type': 'text/plain'})
+            req = Request(url, data, {'User-agent': USER_AGENT, 'Content-type': 'text/plain'})
             response = self.opener.open(req, timeout=HTTP_TIMEOUT)
             text = response.read().decode('utf-8')
-        except urllib.error.HTTPError as e:
+        except HTTPError as e:
             logging.error("HTTP error: %s", e)
             raise PandoraNetError(str(e))
-        except urllib.error.URLError as e:
+        except URLError as e:
             logging.error("Network error: %s", e)
             if e.reason.strerror == 'timed out':
                 raise PandoraTimeout("Network error", submsg="Timeout")
